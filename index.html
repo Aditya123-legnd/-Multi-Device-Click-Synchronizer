@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sync Click</title>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body style="height:100vh; margin:0; background:#eee;">
+  <h2 style="text-align:center;">Sync Click Demo</h2>
+  <script>
+    const socket = io();
+
+    // Capture click and send coordinates
+    document.addEventListener("click", (e) => {
+      const data = { x: e.clientX, y: e.clientY };
+      socket.emit("clickEvent", data);
+    });
+
+    // When receiving click from another device
+    socket.on("performClick", (data) => {
+      const dot = document.createElement("div");
+      dot.style.position = "absolute";
+      dot.style.left = data.x + "px";
+      dot.style.top = data.y + "px";
+      dot.style.width = "10px";
+      dot.style.height = "10px";
+      dot.style.background = "red";
+      dot.style.borderRadius = "50%";
+      document.body.appendChild(dot);
+    });
+  </script>
+</body>
+</html>
