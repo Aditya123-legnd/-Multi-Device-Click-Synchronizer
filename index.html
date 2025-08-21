@@ -1,3 +1,13 @@
+// sync-click-app/public/index.html
+// This HTML file sets up a simple web page that allows users to click anywhere on the screen
+// and synchronizes those clicks across multiple devices using Socket.IO.
+// It listens for click events and emits them to the server, which then broadcasts them to all connected clients.
+// When a click event is received, it creates a visual indicator (a red dot)
+// at the clicked position on the screen.
+// The page is styled to be full-screen with a light gray background and centered title.
+// The script is included at the end of the body to ensure the DOM is fully loaded before executing the JavaScript.
+// The server code is expected to handle the click events and broadcast them to all clients.
+
 <!DOCTYPE html>
 <html>
 <head>
